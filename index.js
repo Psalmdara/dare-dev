@@ -12,84 +12,96 @@ app.use(express.urlencoded({extended:true}))
 app.use(express.json({}))
 
 app.get("/students", (req, res, next) => {
-    const studentsDetails = {
-        name: "Omoge Dare",
+
+    //const {fullName, email, password, age, address, state} = req.body;
+    const user_details = {
+        fullName: "Omoge Oluwadare",
+        email: "dareomoge@gmail.com",
+        password: "123456789",
         age: 25,
-        class: 2020,
-        address: "ilorin Kwara"
+        address: "Asadam road, Ilorin",
+        state: "Kwara",
     }
-    res.send(studentsDetails);    
+    res.send(user_details);    
 })
 
 app.post("/register", (req, res, next) => {
 
-    const fullName = req.body.fullName
-    const email = req.body.email
-    const password = req.body.password
-    //const {userName, email, password} = req.body;
+    //const fullName = req.body.fullName
+    //const email = req.body.email
+    //const password = req.body.password
+    const {fullName, email, password} = req.body;
 
     const body = {
-        fullName: "Psalmdara",
-        email: "dareomoge@gmail.com",
-        password: 123456789
+        fullName: fullName,
+        email: email,
+        password: password
     }
+    console.log(body);
 
     res.send({
-        responseType: req.body,
-        //body,
+        //responseType: req.body,
+        body,
         msg: "Resgistration Successfull"
     });
 })
 
 app.put("/update", (req, res, next) => {
-   
-    const fullName = req.body.fullName
-    const email = req.body.email
-    const password = req.body.password
+    
+    const age = req.body.age
+    const address = req.body.address
     const state = req.body.state
 
-    const body = {
-        fullName: "Psalmdara",
-        email: "dare@gmail.com",
-        password: 123456789,
-        state: "Kwara"
+    const user_details = {
+        fullName: "Omoge Oluwadare",
+        email: "dareomoge@gmail.com",
+        password: "123456789",
+        age: age,
+        address: address,
+        state: state,
     }
+    console.log(user_details);
 
     res.send({
-        body,
+        user_details,
         msg: "Details updated"
     })
 })
 
 app.patch("/patch", (req, res, next) => {
-    const {fullName, email, password, state} = req.body;
+    const {fullName, email, password, age, address, state} = req.body;
 
-    const body = {
-        fullName: "Omoge Dare",
+    const user_details = {
+        fullName: "Omoge Oluwadare",
         email: "dareomoge@gmail.com",
-        paswword: 123456789,
-        state: "kwara"
+        password: password,
+        age: 25,
+        address: "Asadam road, Ilorin",
+        state: "Kwara",
+        
     }
+    console.log(user_details);
 
     res.send({
-        body,
+        user_details,
         msg: "details changed"
     })
 })
 
 app.delete("/delete", (req, res, next) => {
-    const {fullName, email, password, state} = req.body;
+    const {fullName, email, password, age, address, state} = req.body;
 
-    const body = {
-        fullName: "Omoge Dare",
+    const user_details = {
+        fullName: fullName,
         email: "dareomoge@gmail.com",
-        paswword: 123456789,
-        state: "kwara"
+        password: "123456789",
+        age: 25,
+        address: "Asadam road, Ilorin",
+        state: "Kwara",
     }
+    console.log(user_details)
 
-    res.send({
-        msg: "details deleted"
-    })
+    res.send("user_details deleted")
 })
 
 
